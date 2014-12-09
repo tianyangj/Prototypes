@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('HackDay2', ['ionic', 'config', 'HackDay2.controllers', 'HackDay2.services'])
+angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'HackDay2.controllers', 'HackDay2.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,7 +22,11 @@ angular.module('HackDay2', ['ionic', 'config', 'HackDay2.controllers', 'HackDay2
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $authProvider) {
+
+  $authProvider.facebook({
+    clientId: '139356541211'
+  });
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -34,7 +38,8 @@ angular.module('HackDay2', ['ionic', 'config', 'HackDay2.controllers', 'HackDay2
     .state('tab', {
       url: '/tab',
       abstract: true,
-      templateUrl: 'templates/tabs.html'
+      templateUrl: 'templates/tabs.html',
+      controller: 'AppCtrl'
     })
 
     // Each tab has its own nav history stack:
