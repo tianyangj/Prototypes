@@ -25,7 +25,8 @@ angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'HackDay2.controlle
 .config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
   $authProvider.facebook({
-    clientId: '139356541211'
+    url: 'http://192.168.200.120/api/auth/facebook',
+    clientId: '767316740006474'
   });
 
   // Ionic uses AngularUI Router which uses the concept of states
