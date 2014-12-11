@@ -1,15 +1,15 @@
 <ion-view title="Home">
   <ion-content class="has-header">
   	<div class="heros">
-	    <ul rn-carousel rn-carousel-index="heroIndex" class="heros">
+	    <ul rn-carousel rn-carousel-index="heroIndex">
 		  <li ng-repeat="hero in heros">
-		  	<img class="full-image" ng-src="{{hero.file}}" />
+		  	<img ng-src="{{hero.file}}" />
 		  </li>
 		</ul>
 		<div rn-carousel-indicators ng-if="heros.length > 1" slides="heros" rn-carousel-index="heroIndex"></div>
 	</div>
     <div class="list">
-	    <a class="item item-thumbnail-left item-icon-right" ng-repeat="featured in featureds">
+	    <a class="item item-thumbnail-left item-icon-right" ng-repeat="featured in featureds" ui-sref="tab.product({productId:featured.id})">
 	      <img ng-src="{{featured.thumbnailImage}}">
 	      <h2>{{featured.title}}</h2>
 	      <p>{{featured.userRating}} / 10</p>

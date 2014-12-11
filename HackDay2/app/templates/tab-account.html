@@ -1,6 +1,13 @@
 <ion-view title="Account">
   <ion-content class="has-header padding">
-    <h3 class="text-center">Welcome Anonymous!</h3>
-    <button class="button button-block button-royal" ng-click="openModal()">Sign In / Sign Up</button>
+  	<div ng-if="isAuthenticated()">
+  		<h3 class="text-center">Welcome, {{user.firstName}}</h3>
+  		<p>{{user | json}}</p>
+  		<button class="button button-block button-royal" ng-click="clear()">Logout</button>
+  	</div>
+  	<div ng-if="!isAuthenticated()">
+  		<h3 class="text-center">Welcome, Anonymous!</h3>
+    	<button class="button button-block button-royal" ng-click="openModal()">Sign In / Sign Up</button>
+  	</div>
   </ion-content>
 </ion-view>

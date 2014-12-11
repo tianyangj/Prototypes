@@ -1,5 +1,43 @@
 <ion-view title="Cart">
+	<ion-nav-buttons side="left">
+      <button class="button button-clear button-dark" ng-click="doEdit()">
+        Edit
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-dark" ng-click="doReorder()">
+        Reorder
+      </button>
+    </ion-nav-buttons>
   <ion-content class="has-header padding">
-    <h1>Cart</h1>
+    <ion-list
+          show-delete="shouldShowDelete"
+          show-reorder="shouldShowReorder"
+          can-swipe="listCanSwipe">
+	  <ion-item ng-repeat="item in cart"
+	            class="item-thumbnail-left">
+
+	    <img ng-src="{{item.frontImage}}">
+	    <h2>{{item.title}}</h2>
+	    <p>{{59.99 | currency}}</p>
+	    <ion-option-button class="button-positive"
+	                       ng-click="share(item)">
+	      Share
+	    </ion-option-button>
+	    <ion-option-button class="button-energized">
+	      Edit
+	    </ion-option-button>
+	    <ion-delete-button class="ion-minus-circled"
+	                       ng-click="deleteItem(item)">
+	    </ion-delete-button>
+	    <ion-reorder-button class="ion-navicon"
+	                        on-reorder="reorderItem(item, $fromIndex, $toIndex)">
+	    </ion-reorder-button>
+
+	  </ion-item>
+	</ion-list>
+	<button class="button button-full button-assertive">
+	  CHECKOUT
+	</button>
   </ion-content>
 </ion-view>

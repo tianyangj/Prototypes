@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'angular-carousel', 'HackDay2.controllers', 'HackDay2.services'])
+angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'angular-carousel', 'ngStorage', 'HackDay2.controllers', 'HackDay2.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -56,6 +56,20 @@ angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'angular-carousel',
           templateUrl: 'templates/tab-home.html',
           controller: 'HomeCtrl'
         }
+      },
+      resolve: {
+        model: function(homeSvc) {
+          return homeSvc.get();
+        }
+      }
+    })
+    .state('tab.product', {
+      url: '/product/:productId',
+      views: {
+        'tab-home': {
+          templateUrl: 'templates/tab-product.html',
+          controller: 'ProductCtrl'
+        }
       }
     })
 
@@ -65,15 +79,6 @@ angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'angular-carousel',
         'tab-store': {
           templateUrl: 'templates/tab-store.html',
           controller: 'StoreCtrl'
-        }
-      }
-    })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
-      views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
         }
       }
     })

@@ -1,0 +1,47 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'firend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view title="{{model.product.platform.name}}">
+	<ion-nav-buttons side="right">
+      <button class="button button-assertive" ng-click="addToCart(model.product)">
+        ADD
+      </button>
+    </ion-nav-buttons>
+  <ion-content has-header="true">
+  	<div class="list card">
+	  <div class="item item-avatar">
+	    <img src="http://blogs.technet.com/resized-image.ashx/__size/550x0/__key/communityserver-blogs-components-weblogfiles/00-00-00-90-35/6574.Xbox_2D00_logo.jpg">
+	    <h2>{{model.product.title}}</h2>
+	    <p>{{model.product.genre.name}}</p>
+	  </div>
+
+	  <div class="item item-body">
+	    <img class="full-image" ng-src="{{model.product.frontImage}}">
+	    <p>{{model.product.shortDescription}}</p>
+	    <p>
+	      <a href="#" class="subdued">{{model.product.criticCount}} Likes</a>
+	      <a href="#" class="subdued">{{model.product.userRatingCount}} Ratings</a>
+	    </p>
+	  </div>
+
+	  <div class="item tabs tabs-secondary tabs-icon-left">
+	    <a class="tab-item" href="#">
+	      <i class="icon ion-thumbsup"></i>
+	      Like
+	    </a>
+	    <a class="tab-item" href="#">
+	      <i class="icon ion-chatbox"></i>
+	      Rate
+	    </a>
+	    <a class="tab-item" href="#">
+	      <i class="icon ion-share"></i>
+	      Share
+	    </a>
+	  </div>
+
+	</div>
+  </ion-content>
+</ion-view>

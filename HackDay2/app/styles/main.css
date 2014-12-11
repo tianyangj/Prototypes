@@ -6,13 +6,27 @@
 .heros {
 	height: 200px;
 	position: relative;
+	text-align: center;
 }
 
 .heros [rn-carousel] {
 	height: 100%;
 }
 
+.heros [rn-carousel] img {
+	width: 100%;
+	height: 100%;
+}
+
 .heros [rn-carousel-indicators] {
 	position: absolute;
-	bottom: 0;
+	bottom: 5px;
+	right: 0;
+	left: 0;
+	font-size: 150%;
+	z-index: 10;
+}
+
+.heros [rn-carousel-indicators] span.active {
+	color: #D65611;
 }

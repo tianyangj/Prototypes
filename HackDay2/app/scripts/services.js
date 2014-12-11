@@ -24,4 +24,28 @@ angular.module('HackDay2.services', [])
       return friends[friendId];
     }
   };
+})
+
+.factory('homeSvc', function($http) {
+  return {
+            get: function() {
+                return $http({
+                    method: 'GET',
+                    cache: true,
+                    url: 'http://192.168.200.120/api/merchandising/getdisplays?ids=games'
+                })
+                    .then(function(response) {
+                        var heros = _.find(response.data.groups, { name: 'HeroItems' });
+                        var featureds = _.find(response.data.groups, { name: 'FeaturedProducts' });
+                        return {
+                            heros: heros.items.map(function(item) {
+                                return item.product.design.displays[0];
+                            }),
+                            featureds: featureds.items.map(function(item) {
+                                return response.data.products[item.product.productVariantId];
+                            })
+                        };
+                    });
+            }
+        };
 });
