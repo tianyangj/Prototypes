@@ -29,6 +29,10 @@ angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'angular-carousel',
     clientId: '767316740006474'
   });
 
+  $authProvider.twitter({
+    url: 'http://192.168.200.120/api/auth/twitter'
+  });
+
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
