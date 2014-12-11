@@ -1,1 +1,18 @@
 /* Your application styles go here */
+.tab-item.tab-item-active {
+	color: #D65611;
+}
+
+.heros {
+	height: 200px;
+	position: relative;
+}
+
+.heros [rn-carousel] {
+	height: 100%;
+}
+
+.heros [rn-carousel-indicators] {
+	position: absolute;
+	bottom: 0;
+}

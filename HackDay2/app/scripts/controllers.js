@@ -19,10 +19,23 @@ angular.module('HackDay2.controllers', [])
   };
 })
 
-.controller('DashCtrl', function() {
+.controller('HomeCtrl', function($scope, $http) {
+  $http.get('http://192.168.200.120/api/merchandising/getdisplays?ids=games')
+  .then(function(response) {
+    var heros = _.find(response.data.groups, { name: 'HeroItems' });
+    var featureds = _.find(response.data.groups, { name: 'FeaturedProducts' });
+    $scope.heros = heros.items.map(function(item) {
+      return item.product.design.displays[0];
+    });
+    $scope.heroIndex = 0;
+    $scope.featureds = featureds.items.map(function(item) {
+      return response.data.products[item.product.productVariantId];
+    });
+    console.log($scope)
+  });
 })
 
-.controller('FriendsCtrl', function($scope, Friends) {
+.controller('StoreCtrl', function($scope, Friends) {
   $scope.friends = Friends.all();
 })
 
@@ -31,4 +44,7 @@ angular.module('HackDay2.controllers', [])
 })
 
 .controller('AccountCtrl', function() {
+})
+
+.controller('CartCtrl', function() {
 });

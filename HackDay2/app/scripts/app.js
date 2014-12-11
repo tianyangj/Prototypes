@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'HackDay2.controllers', 'HackDay2.services'])
+angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'angular-carousel', 'HackDay2.controllers', 'HackDay2.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -45,22 +45,22 @@ angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'HackDay2.controlle
 
     // Each tab has its own nav history stack:
 
-    .state('tab.dash', {
-      url: '/dash',
+    .state('tab.home', {
+      url: '/home',
       views: {
-        'tab-dash': {
-          templateUrl: 'templates/tab-dash.html',
-          controller: 'DashCtrl'
+        'tab-home': {
+          templateUrl: 'templates/tab-home.html',
+          controller: 'HomeCtrl'
         }
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.store', {
+      url: '/store',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-store': {
+          templateUrl: 'templates/tab-store.html',
+          controller: 'StoreCtrl'
         }
       }
     })
@@ -82,10 +82,20 @@ angular.module('HackDay2', ['ionic', 'config', 'satellizer', 'HackDay2.controlle
           controller: 'AccountCtrl'
         }
       }
+    })
+
+    .state('tab.cart', {
+      url: '/cart',
+      views: {
+        'tab-cart': {
+          templateUrl: 'templates/tab-cart.html',
+          controller: 'CartCtrl'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/home');
 
 });
 
